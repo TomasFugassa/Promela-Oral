@@ -47,7 +47,7 @@ active [N] proctype Process() {
         od
 
         inCriticalCount++;
-        printf("Process %d is in critical section. In critical count: %d\n", _pid, inCriticalCount);
+        printf("Process %d is in critical section\n", _pid);
         assert(inCriticalCount <= 1);
         inCriticalCount--;
 
