@@ -1,3 +1,24 @@
+# Propiedades
+
+## Exclusion Mutua
+
+Nunca puede haber más de un proceso ejecutando simultáneamente la sección crítica
+
+## Ausencia de deadlock
+
+Si uno o más procesos desean ingresar a la sección crítica, el sistema nunca debe quedar completamente bloqueado, 
+es decir debe seguir existiendo progreso en algun proceso
+
+## Ausencia de inanición (No Starvation)
+
+Todo proceso que solicite ingresar a la sección crítica debe poder hacerlo eventualmente
+
+## Progreso (Liveness)
+
+Si ningún proceso está utilizando la sección crítica y existe algún proceso que desea entrar, alguno de ellos debe poder avanzar
+
+# Intentos
+
 ## Intento 1 – Alternancia estricta
 
 **Idea:** Utilizar una variable `turn` para indicar qué proceso puede ingresar a la sección crítica
