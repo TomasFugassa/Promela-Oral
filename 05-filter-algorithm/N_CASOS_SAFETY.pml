@@ -1,5 +1,5 @@
 #define N 4
-#define MAX_ROUNDS 1
+#define MAX_ROUNDS 2
 
 byte levels[N];
 byte victim[N];
