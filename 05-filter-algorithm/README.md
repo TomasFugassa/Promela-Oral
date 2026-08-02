@@ -12,6 +12,14 @@ En cada nivel:
 
 El último proceso que logra atravesar todos los niveles puede ingresar a la sección crítica
 
+## Comparacion con Bakery
+
+Ambos algoritmos permiten exclusión mutua para **N procesos**, pero utilizan estrategias diferentes:
+
+- **Bakery Algorithm:** establece un orden global mediante tickets. Ingresa el proceso con el menor número y, en caso de empate, se utiliza el PID
+- **Filter Algorithm:** reemplaza los tickets por una serie de **N-1 niveles**, filtrando progresivamente los procesos hasta que solo uno alcanza la sección crítica
+
+Mientras Bakery utiliza las variables `order[]` y `choosingNumber[]`, el Filter Algorithm utiliza `level[]` y `victim[]`
 
 ## Pseudocodigo
 
