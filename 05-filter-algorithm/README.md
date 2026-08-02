@@ -1,11 +1,25 @@
+# Filter Algorithm (Peterson Generalizado para N Procesos)
+
+## Descripción
+
+**idea** consiste en hacer que todos los procesos atraviesen una serie de **N-1 niveles** antes de ingresar a la sección crítica
+
+En cada nivel:
+- El proceso indica el nivel en el que se encuentra `level[i]`
+- Se designa como la última víctima del nivel (`victim[level] = i`)
+- Si existe otro proceso en el mismo nivel o superior y además sigue siendo la víctima, el proceso espera (busy wait)
+- Si deja de ser la víctima o ya no existen procesos en ese nivel, continúa al siguiente
+
+El último proceso que logra atravesar todos los niveles puede ingresar a la sección crítica
 
 
-Pseudocode:
-Shared:
+## Pseudocodigo
+
+Variables Compartidas:
     level[0..N-1] := 0
     victim[1..N-1]
 
-Process i:
+Proceso i:
     while (true) {
         for (L = 1; L < N; L++) {
             level[i] = L;
