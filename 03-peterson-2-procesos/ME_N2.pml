@@ -5,6 +5,11 @@ byte turn = 1;
 bool inCriticalSectionOne = false;
 bool inCriticalSectionTwo = false;
 
+ltl MUTEX { [] !(inCriticalSectionOne && inCriticalSectionTwo) };
+ltl GLOBAL_PROGRESS { [] <> (inCriticalSectionOne || inCriticalSectionTwo) };
+ltl LOCAL_PROGRESS_ONE { [] <> inCriticalSectionOne };
+ltl LOCAL_PROGRESS_TWO{ [] <> inCriticalSectionTwo };
+
 active proctype ProcessOne() {
     do
     :: true -> 
@@ -42,8 +47,3 @@ active proctype ProcessTwo() {
         wantTwo = false;
     od
 }
-
-ltl mutex { [] !(inCriticalSectionOne && inCriticalSectionTwo) };
-ltl globalProgress { [] <> (inCriticalSectionOne || inCriticalSectionTwo) };
-ltl localProgressOne { [] <> inCriticalSectionOne };
-ltl localProgressTwo{ [] <> inCriticalSectionTwo };
