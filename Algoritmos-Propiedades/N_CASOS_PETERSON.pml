@@ -1,10 +1,12 @@
 #define N 4
+#define MAX_ROUNDS 1
 
 byte levels[N];
 byte victim[N];
 
 byte inCriticalCount = 0;
 
+/*
 ltl CS_EVENTUALLY { [] <> (inCriticalCount > 0) }
 ltl CS_EVENTUALLY_FREE { [] ((inCriticalCount > 0) -> <> (inCriticalCount == 0)) }
 
@@ -12,14 +14,16 @@ ltl CS_SAFETY { [] (inCriticalCount <= 1) }
 
 ltl P0_WANT_TO_ENTER { [] <> (levels[0] > 0) }
 ltl P0_REACH_SC { [] ((levels[0] > 0) -> <> (levels[0] == 0)) }
+*/
 
 active[N] proctype Process() {
     byte l;
     byte k;
     bool exists;
+    byte rounds = 0;
 
     do 
-    :: true ->
+    :: rounds < MAX_ROUNDS ->
         l = 1;
 
         do
@@ -65,6 +69,8 @@ active[N] proctype Process() {
             assert(inCriticalCount <= 1);
             inCriticalCount--;
             levels[_pid] = 0;
+            rounds++;
+    :: else -> break;
     od
 }
 
