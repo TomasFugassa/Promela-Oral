@@ -9,7 +9,10 @@
 
 ## Garantiza
 
-- Exclusión mutua
-- No deadlock
-- No starvation
-- Liveness
+• Safety:
+    - Exclusión mutua
+
+• Liveness:
+    - Progreso
+    - Ausencia de deadlock
+    - Ausencia de starvation

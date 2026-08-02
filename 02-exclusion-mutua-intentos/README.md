@@ -4,18 +4,18 @@
 
 Nunca puede haber más de un proceso ejecutando simultáneamente la sección crítica
 
-## Ausencia de deadlock
+## Progreso (Liveness)
+
+Si ningún proceso está utilizando la sección crítica y existe algún proceso que desea entrar, alguno de ellos debe poder avanzar
+
+## Ausencia de deadlock (Liveness)
 
 Si uno o más procesos desean ingresar a la sección crítica, el sistema nunca debe quedar completamente bloqueado, 
 es decir debe seguir existiendo progreso en algun proceso
 
-## Ausencia de inanición (No Starvation)
+## Ausencia de inanición / No Starvation (Liveness)
 
 Todo proceso que solicite ingresar a la sección crítica debe poder hacerlo eventualmente
-
-## Progreso (Liveness)
-
-Si ningún proceso está utilizando la sección crítica y existe algún proceso que desea entrar, alguno de ellos debe poder avanzar
 
 # Intentos
 
