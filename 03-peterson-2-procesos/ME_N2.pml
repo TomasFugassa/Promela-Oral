@@ -1,6 +1,6 @@
 bool wantOne = false;
 bool wantTwo = false;
-byte turn = 1;
+byte last = 1;
 
 bool inCriticalSectionOne = false;
 bool inCriticalSectionTwo = false;
@@ -14,10 +14,10 @@ active proctype ProcessOne() {
     do
     :: true -> 
         wantOne = true;
-        turn = 1;
+        last = 1;
 
         if
-        :: !wantTwo || turn == 2
+        :: !wantTwo || last == 2
         fi
 
     progressOne:
@@ -33,10 +33,10 @@ active proctype ProcessTwo() {
     do
     :: true -> 
         wantTwo = true;
-        turn = 2;
+        last = 2;
 
         if
-        :: !wantOne || turn == 1
+        :: !wantOne || last == 1
         fi
 
     progressTwo:

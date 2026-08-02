@@ -2,12 +2,14 @@
 
 ## Idea
 
-- want[] indica intención.
-- turn decide quién espera.
-- El último que llegó espera.
+- want[] indica intención la intencion de ingresar a la seccion critica
+- last se utiliza para desempatar cuando ambos procesos quieren entrar al mismo tiempo
+- El último proceso que modifica `last` cede el paso al otro proceso
+- Un proceso solo espera si el otro tambien quiere entrar y ademas es su turno de esperar 
 
 ## Garantiza
 
-- Exclusión mutua.
-- No deadlock.
-- No starvation.
+- Exclusión mutua
+- No deadlock
+- No starvation
+- Liveness
